@@ -5,6 +5,13 @@ let modoCopia = false;            // true = seleccionar celdas destino
 let modoSeleccionPlatos = false;  // true = seleccionar platos a copiar
 let platosSeleccionados = [];     // array {plato,rowId,field}
 
+document.getElementById("btnPlatos").addEventListener("click", () => {
+  window.open("platos.html", "_blank");
+});
+document.getElementById("btnRuedas").addEventListener("click", () => {
+  window.open("index.html", "_blank");
+});
+
 /* datos base (simulados por combinación hotel+rueda) */
 const sampleData = {
   "Hotel1|2026_desayuno":[
@@ -293,3 +300,4 @@ function loadCombination(){
 hotelSel.addEventListener("change", loadCombination);
 
 ruedaSel.addEventListener("change", loadCombination);
+
