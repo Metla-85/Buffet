@@ -1,16 +1,63 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
+
 <head>
 <meta charset="utf-8" />
 <title>Rueda de Menú — App</title>
+
 <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ---- MENU LATERAL ---- */
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 70px;
+  height: 100vh;
+  background: #f8f8f8;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  gap: 10px;
+  z-index: 2000;
+}
+
+#sidebar button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 12px 0;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+#sidebar button:hover {
+  background: #e6e6e6;
+}
+
+/* ---- EMPUJAR EL CONTENIDO ---- */
+body {
+  margin: 0;
+  padding-left: 70px; /* espacio reservado para el sidebar */
+}
+</style>
+
 </head>
+
 <body>
 
+<!-- 🔥 MENÚ LATERAL FUNCIONANDO EN TODA LA PÁGINA -->
+<div id="sidebar">
+  <button id="btnRuedas">🛞 Ruedas</button>
+  <button id="btnPlatos">🍽️ Platos</button>
+</div>
 
-  
 <header class="app-header">
   <div class="branding">
     <div class="logo">RM</div>
@@ -44,23 +91,21 @@
   </div>
 </header>
 
-<div id="sidebar">
-  <button id="btnRuedas">🛞 Ruedas</button>
-  <button id="btnPlatos">🍽️ Platos</button>
-</div>
-  
 <main class="layout">
   <div id="tabla"></div>
 </main>
 
 <script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
 <script src="js/app.js"></script>
-<script>document.getElementById("btnPlatos").addEventListener("click", () => { window.open("platos.html", "_blank");});</script>
-<script>document.getElementById("btnRuedas").addEventListener("click", () => { window.open("index.html", "_blank");});</script>
-   
+
+<script>
+document.getElementById("btnPlatos").addEventListener("click", () => {
+  window.open("platos.html", "_blank");
+});
+document.getElementById("btnRuedas").addEventListener("click", () => {
+  window.open("index.html", "_blank");
+});
+</script>
+
 </body>
 </html>
-
-
-
-
