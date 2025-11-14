@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Rueda de Menú — App</title>
+<link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="branding">
+    <div class="logo">RM</div>
+    <div>
+      <h1>Rueda de Menú</h1>
+      <p class="lead">Editar menús semanales — arrastra filas desde la izquierda, mueve platos entre celdas</p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="select">
+      <label style="font-size:13px;color:var(--muted);margin-right:6px">Hotel</label>
+      <select id="hotelSelector">
+        <option value="Hotel1">Hotel1</option>
+        <option value="Hotel2">Hotel2</option>
+      </select>
+    </div>
+
+    <div class="select">
+      <label style="font-size:13px;color:var(--muted);margin-right:6px">Rueda</label>
+      <select id="ruedaSelector">
+        <option value="2026_desayuno">2026_desayuno</option>
+        <option value="2026_almuerzo">2026_almuerzo</option>
+        <option value="2026_cena">2026_cena</option>
+      </select>
+    </div>
+
+    <button id="addEstacionBtn" class="btn ghost">Añadir estación</button>
+    <button id="copiarPlatos" class="btn">Seleccionar platos</button>
+    <button id="pegarPlatos" class="btn ghost">Pegar contenido</button>
+  </div>
+</header>
+
+<main class="layout">
+  <div id="tabla"></div>
+</main>
+
+<script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
