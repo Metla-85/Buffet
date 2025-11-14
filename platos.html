@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Gestión de Platos</title>
+<style>
+body { font-family: sans-serif; padding: 20px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+button {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-add { background: #4caf50; color: white; }
+.btn-del { background: #c62828; color: white; }
+.btn-edit { background: #0077cc; color: white; }
+</style>
+</head>
+
+<body>
+
+<h2>Gestión de Platos</h2>
+<button class="btn-add" id="addPlato">Añadir Plato</button>
+
+<table id="tablaPlatos">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+let platos = [];
+
+function renderTabla() {
+  const tbody = document.querySelector("#tablaPlatos tbody");
+  tbody.innerHTML = "";
+
+  platos.forEach((p, i) => {
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td><input type="text" value="${p}" data-index="${i}" class="editPlato"></td>
+      <td>
+        <button class="btn-del" onclick="borrarPlato(${i})">Borrar</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.querySelectorAll(".editPlato").forEach(inp => {
+    inp.addEventListener("change", e => {
+      platos[e.target.dataset.index] = e.target.value;
+      guardarPlatos();
+    });
+  });
+}
+
+function borrarPlato(i) {
+  platos.splice(i, 1);
+  guardarPlatos();
+  renderTabla();
+}
+
+function guardarPlatos() {
+  localStorage.setItem("platos", JSON.stringify(platos));
+}
+
+function cargarPlatos() {
+  platos = JSON.parse(localStorage.getItem("platos") || "[]");
+}
+
+document.getElementById("addPlato").addEventListener("click", () => {
+  platos.push("Nuevo plato");
+  guardarPlatos();
+  renderTabla();
+});
+
+cargarPlatos();
+renderTabla();
+</script>
+</body>
+</html>
