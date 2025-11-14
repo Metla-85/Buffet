@@ -86,3 +86,32 @@
   #copiarPlatos, #pegarPlatos, #addEstacionBtn { border-radius:8px;padding:8px 12px;font-weight:600;box-shadow:0 4px 18px rgba(17,24,39,0.06) }
 
   @media (max-width:900px){ .controls{ flex-direction:column; align-items:flex-start; gap:8px } }
+
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 70px;
+  height: 100vh;
+  background: #f8f8f8;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  gap: 10px;
+}
+
+#sidebar button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 12px 0;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+#sidebar button:hover {
+  background: #e6e6e6;
+}
