@@ -76,6 +76,7 @@ function renderPlatos(cell){
           const originVal = ensureArr(originCell.getValue()).filter(p=>p!==data.plato);
           originCell.setValue(originVal);
         }
+        
         cell.getRow().reformat();
         tabla.redraw(true);
       }catch(err){ console.error(err); }
@@ -123,10 +124,11 @@ function renderPlatos(cell){
     row.addEventListener("mouseleave", e=>{ clearTimeout(timer); row.removeAttribute("draggable"); });
 
     row.addEventListener("dragstart", e=>{
-      const payload = { plato, rowId: cell.getRow().getIndex(), field: cell.getField() };
+      const payload = { plato, rowId: cell.getRow().getData()._id, field: cell.getField() };
       e.dataTransfer.setData("application/json", JSON.stringify(payload));
       row.classList.add("dragging");
     });
+    
     row.addEventListener("dragend", e=>{ row.classList.remove("dragging"); row.removeAttribute("draggable"); });
 
     row.appendChild(chk);
@@ -289,4 +291,5 @@ function loadCombination(){
   tabla.setData(dataset);
 }
 hotelSel.addEventListener("change", loadCombination);
+
 ruedaSel.addEventListener("change", loadCombination);
